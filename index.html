@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EVIDA · 데모</title>
+<style>
+  :root{
+    --ink:#16191d; --muted:#5c6570; --line:#dfe3e8; --bg:#f6f7f9; --card:#fff;
+    --blue:#1b5cff; --blue-tint:#eef3ff; --green:#0d7a4a; --amber:#8a5a00; --amber-tint:#fff8e8;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ink:#e8eaed; --muted:#9aa4b0; --line:#2b3138; --bg:#12151a; --card:#191d23;
+      --blue:#6f9bff; --blue-tint:#1a2438; --green:#4cc38a; --amber:#e0a33a; --amber-tint:#2a2114;
+    }
+  }
+  :root[data-theme="dark"]{
+    --ink:#e8eaed; --muted:#9aa4b0; --line:#2b3138; --bg:#12151a; --card:#191d23;
+    --blue:#6f9bff; --blue-tint:#1a2438; --green:#4cc38a; --amber:#e0a33a; --amber-tint:#2a2114;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font:16px/1.75 -apple-system,BlinkMacSystemFont,"Pretendard","Apple SD Gothic Neo",
+      "Malgun Gothic",Segoe UI,Roboto,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:48px 16px 80px}
+  header{margin-bottom:34px}
+  .eyebrow{font-size:13px;color:var(--muted);letter-spacing:.02em;margin:0 0 10px;font-weight:550}
+  h1{font-size:34px;line-height:1.25;margin:0 0 12px;letter-spacing:-.01em}
+  .tagline{font-size:18px;color:var(--muted);margin:0;line-height:1.7}
+  .launch{display:block;background:var(--blue);color:#fff;text-decoration:none;
+    padding:22px 26px;border-radius:12px;margin:30px 0;font-size:18px;font-weight:650;
+    box-shadow:0 2px 10px rgba(27,92,255,.22)}
+  .launch span{display:block;font-size:14px;font-weight:450;opacity:.9;margin-top:6px}
+  .launch.down{background:var(--card);color:var(--muted);border:1px dashed var(--line);
+    box-shadow:none;cursor:default}
+  section{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:26px 28px;margin-bottom:18px}
+  h2{font-size:20px;margin:0 0 6px;letter-spacing:-.005em}
+  h2 .no{color:var(--blue);font-variant-numeric:tabular-nums;margin-right:9px}
+  .cost{display:inline-block;font-size:12px;font-weight:600;padding:3px 9px;border-radius:99px;
+    margin-left:8px;vertical-align:2px}
+  .free{background:var(--blue-tint);color:var(--blue)}
+  .paid{background:var(--amber-tint);color:var(--amber)}
+  p{margin:10px 0}
+  .small{font-size:14px;color:var(--muted)}
+  pre{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:15px 17px;
+    overflow-x:auto;font-size:13.5px;line-height:1.7;white-space:pre-wrap;word-break:break-word;
+    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;margin:12px 0}
+  .q{position:relative}
+  .q h3{font-size:14px;color:var(--muted);margin:18px 0 0;font-weight:600}
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line)}
+  th{font-size:13px;color:var(--muted);font-weight:600}
+  td.n{text-align:right;font-variant-numeric:tabular-nums}
+  .note{background:var(--amber-tint);border-left:3px solid var(--amber);
+    border-radius:0 8px 8px 0;padding:14px 18px;margin:16px 0;font-size:14.5px}
+  ul{padding-left:22px;margin:10px 0}
+  li{margin:7px 0}
+  footer{margin-top:36px;font-size:13.5px;color:var(--muted);text-align:center;line-height:2}
+  footer a{color:var(--blue)}
+  @media (max-width:640px){
+    .wrap{padding:32px 16px 60px} h1{font-size:27px} .tagline{font-size:16px}
+    section{padding:20px 18px} .launch{padding:18px 20px;font-size:16px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">제 4회 인공지능 신약개발 경진대회 · 본선 · 팀 NDAgent</p>
+  <h1>EVIDA</h1>
+  <p class="tagline">증거가 실제로 있는 곳까지만 말하는 신약 연구 에이전트.<br>
+     연구 질문에서 <strong>실제로 해볼 수 있는 실험</strong>까지, 모든 값의 출처를 되짚을 수 있게.</p>
+</header>
+
+<a class="launch" id="launch" href="#" hidden>
+  데모 실행하기 →
+  <span id="launch-host"></span>
+</a>
+<div class="launch down" id="launch-down">
+  데모 주소 준비 중
+  <span>이 페이지의 실행 방법과 예시 쿼리는 지금 그대로 읽으실 수 있습니다.</span>
+</div>
+
+<section>
+  <h2>먼저 아셔야 할 것</h2>
+  <p>이 데모는 <strong>실제 공개 자료원에 실시간으로 질의하고 실제 계산을 돌립니다.</strong>
+     ChEMBL·BindingDB·PubChem·RCSB PDB·Europe PMC·Open Targets·ClinicalTrials.gov·DailyMed·GtoPdb를
+     조회하고, RDKit·AutoDock Vina·ViennaRNA로 계산합니다. 미리 만들어 둔 답을 재생하지 않습니다.</p>
+  <p class="small">그래서 새 연구 한 건은 <strong>수 분에서 수십 분</strong> 걸립니다.
+     아래 ①②는 모델을 호출하지 않아 즉시 보이고, ③④는 실제로 모델과 도구를 실행합니다.</p>
+  <div class="note">
+    <strong>모델 호출 상한이 걸려 있습니다.</strong> 공개 인스턴스이므로 호출 횟수에 상한이 있습니다.
+    상한에 닿으면 새 연구는 사유와 함께 거절되고, <strong>완료된 연구(①②)는 그대로 열립니다.</strong>
+    모든 데이터베이스는 스냅샷 복사본이라, 무엇을 입력해도 원 연구 기록은 바뀌지 않습니다.
+  </div>
+</section>
+
+<section>
+  <h2><span class="no">①</span>완료된 실제 연구 결과 열기<span class="cost free">모델 호출 0회</span></h2>
+  <p>첫 화면 아래 <strong>“자료 없이 먼저 살펴보세요”</strong>에서 <strong>완료 결과 열기</strong>를 누르세요.</p>
+  <ul>
+    <li><strong>LRRK2 저분자 후보</strong> — 공개 후보 73개(CACHE 자료)의 물성·ADMET·도킹</li>
+    <li><strong>랫드 간 Ttr siRNA</strong> — 처리표 3개, 표적 유전자 변화와 대조군 차이</li>
+  </ul>
+  <p class="small"><strong>보실 것:</strong> 2단계의 적용성·타당성 2축 비교에서 <strong>축 값을 클릭하면
+     그 값이 어느 원자료에서 나왔는지</strong> 나옵니다. 순위를 매길 수 없을 때는 “앞선다고 말할 수 없다”고
+     적히고, 자격 게이트에 걸린 후보는 순위에서 빠지며 그 사유가 표시됩니다.</p>
+</section>
+
+<section>
+  <h2><span class="no">②</span>다섯 단계 예시 워크스페이스<span class="cost free">모델 호출 0회</span></h2>
+  <p>워크스페이스 목록에서 <strong>「데모 · 다섯 단계 예시」</strong>를 엽니다.
+     각 단계의 <strong>예상 입력과 예상 출력</strong>이 함께 붙어 있어, 실제 연구를 돌리지 않고도
+     화면이 무엇을 받고 무엇을 내놓는지 확인하실 수 있습니다.</p>
+  <p class="small">제목에 “실제 연구 결과 아님”이 명시됩니다. 화면 구조를 보기 위한 예시입니다.</p>
+</section>
+
+<section class="q">
+  <h2><span class="no">③</span>예시 쿼리로 새 연구 시작<span class="cost paid">실제 모델 호출</span></h2>
+  <p>첫 화면에서 <strong>“연구 질문부터 정리”</strong>를 고르고, 아래 쿼리 하나를 붙여넣은 뒤
+     <strong>모델을 선택하고</strong>(gpt-6-sol · gpt-5.6-sol · gpt-5.6-terra · gpt-5.6-luna)
+     <strong>질문 검토 시작</strong>을 누르세요.</p>
+
+  <h3>쿼리 A · 기전부터 결정해야 하는 경우</h3>
+<pre>특발성 폐섬유증에서 기존 항섬유화제(nintedanib·pirfenidone)와 다른 기전을
+겨냥하는 접근을 검토하고 싶습니다. 저분자와 siRNA를 모두 열어 두고, 어느
+기전이 근거가 충분한지를 먼저 결정해야 합니다. 기전 후보를 비교하고, 근거가
+되는 기전에 대해서는 실제 화합물을 회수하고 그 화학으로 새 구조까지 제안한
+뒤 같은 표적에 도킹해 주세요. 확보한 자료는 없습니다.</pre>
+
+  <h3>쿼리 B · 제약이 답을 결정하는 경우</h3>
+<pre>조기 발병 전자간증에서 임신을 연장할 수 있는 치료 방향을 찾고 있습니다.
+태아 안전성 때문에 대부분의 약이 배제되는데, 그 제약을 반영해서 가능한
+접근과 불가능한 접근을 구분해 주세요. 가능한 쪽에는 실제 후보와 근거를
+연결해 주세요.</pre>
+
+  <h3>쿼리 C · 표적이 이미 정해진 경우</h3>
+<pre>PDE4B를 겨냥하는 저분자를 검토합니다. 보고된 화합물을 회수하고, 그
+화합물들로부터 새 구조를 제안한 뒤, 같은 표적 구조에 도킹해서 부모
+화합물보다 나은 것이 있는지 확인해 주세요.</pre>
+
+  <h3>쿼리 D · siRNA 방향</h3>
+<pre>인간 TTR의 공개 전사체를 확인하고 지정 구간에서 siRNA 후보를 만들어
+접근성과 비표적 가능성을 비교해 주세요. 조직은 간을 가정합니다.</pre>
+
+  <p class="small"><strong>보실 것:</strong> 모델이 먼저 <strong>질문을 구조화해</strong> 보여주고(1단계),
+     그다음 실제 도구를 호출합니다. 화면에 <strong>지금 어느 확인을 하는 중인지</strong>가 표시됩니다.
+     추천 1순위를 따를 의무는 없습니다 — <strong>다른 순위를 고르면 그 경로로 연구가 이어지고</strong>,
+     그 기전의 표적에서 후보가 다시 회수·생성됩니다.</p>
+</section>
+
+<section>
+  <h2><span class="no">④</span>자기 자료를 올려서 시작<span class="cost paid">실제 모델 호출</span></h2>
+  <ul>
+    <li><strong>저분자</strong> — 후보 ID와 SMILES가 있는 CSV. 화면에서 <strong>빈 CSV 양식</strong>을 내려받을 수 있습니다.</li>
+    <li><strong>siRNA</strong> — 유전자별 차등발현 결과표(DESeq2 형식) TSV. <strong>빈 TSV 양식</strong> 제공.</li>
+  </ul>
+  <p class="small">올린 원자료가 그대로 보존되고, 계산 결과가 그 원자료에 연결되어 표시됩니다.</p>
+</section>
+
+<section>
+  <h2>측정한 성능 지표</h2>
+  <table>
+    <tr><th>지표</th><th class="n">값</th></tr>
+    <tr><td>활성 모델 — 미확인 골격 홀드아웃 순위상관</td><td class="n"><strong>0.637</strong> (ChEMBL 단독 0.575)</td></tr>
+    <tr><td>학습 규모</td><td class="n">6,188 화합물 / 2,665 골격</td></tr>
+    <tr><td>홀드아웃 MAE</td><td class="n">0.734 (단독 0.81)</td></tr>
+    <tr><td>생성기 — 적용 범위 안 비율</td><td class="n">CReM 98.7% / TL 62.0% / prior 2.7%</td></tr>
+    <tr><td>도킹 리간드 효율 중앙값</td><td class="n">CReM 0.387 / prior 0.334 / TL 0.330 / 회수 화합물 0.306</td></tr>
+    <tr><td>테스트</td><td class="n">Python 544 · 화면 117</td></tr>
+  </table>
+  <p class="small">마지막 줄이 이 표의 요점입니다. 원 Vina 점수로는 CReM이 꼴찌지만(중원자수 22 대 32),
+     원자당 효율로는 1위입니다 — <strong>크기 보정 없는 도킹 순위는 결합의 순위가 아니라 크기의 순위입니다.</strong>
+     두 지표를 함께 보여주는 것이 이 제품의 방식입니다.</p>
+</section>
+
+<section>
+  <h2>“확인할 수 없음”이 보이면</h2>
+  <p>고장이 아니라 <strong>설계된 출력</strong>입니다. 이 제품은 자료가 없을 때 값을 지어내지 않습니다.
+     순위를 매길 수 없으면 그렇게 적고, 자료원 접근 권한이 없으면 그것을
+     <strong>음성 근거로 쓰지 않습니다</strong>. 예측값에는 적용 범위가 붙고, 범위를 벗어난 구조는
+     그렇게 표시됩니다.</p>
+</section>
+
+<footer>
+  이 페이지는 데모의 현관입니다. 실제 실행은 위 버튼의 주소에서 이루어집니다.<br>
+  데모 주소가 응답하지 않으면 잠시 후 다시 시도해 주세요 — 위 실행 방법과 예시 쿼리는 그대로 유효합니다.
+</footer>
+
+</div>
+<script>
+// The live address is kept in one file so it can change without touching this page.
+fetch('demo.json?t=' + Date.now()).then(r => r.ok ? r.json() : null).then(d => {
+  if (!d || !d.url) return;
+  const a = document.getElementById('launch');
+  a.href = d.url;
+  a.hidden = false;
+  a.rel = 'noopener';
+  document.getElementById('launch-host').textContent =
+    d.url.replace(/^https?:\/\//, '') + (d.note ? ' · ' + d.note : '');
+  document.getElementById('launch-down').hidden = true;
+}).catch(() => {});
+</script>
+</body>
+</html>
