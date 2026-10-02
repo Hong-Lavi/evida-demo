@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-02",
+  "scope": "Internal descriptive comparison: four questions, two starts per question per arm.",
+  "cases": [
+    "Alzheimer",
+    "IPF",
+    "PDE4B",
+    "TTR siRNA"
+  ],
+  "model": "gpt-6-sol",
+  "reasoning_effort": "medium",
+  "max_responses_per_start": {
+    "research_and_synthesis": 14,
+    "format_correction": 2
+  },
+  "same_tools_and_access": true,
+  "review": "Criteria frozen before answer reading; arm labels masked during content review; developer-team review.",
+  "arm_labels": {
+    "A": "General instruction",
+    "B": "EVIDA procedure"
+  },
+  "arm_results": {
+    "A": {
+      "original_started_denominator": 8,
+      "published_answer": 7,
+      "question_all_four_traceable": 1,
+      "action_all_six": 6,
+      "new_measurement_card_with_six_elements_and_links": 3
+    },
+    "B": {
+      "original_started_denominator": 8,
+      "published_answer": 8,
+      "question_all_four_traceable": 4,
+      "action_all_six": 7,
+      "new_measurement_card_with_six_elements_and_links": 3
+    }
+  },
+  "source_code_url": "https://github.com/Hong-Lavi/evida-submission-2026",
+  "scope_note": "These are research-workflow outcomes on the stated starts. Generated structures and measurement cards are proposals for subsequent experimental assessment."
+}

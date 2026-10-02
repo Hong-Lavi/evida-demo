@@ -1,6 +1,6 @@
 {
-  "url": "https://fwd-speed-catalogs-attacks.trycloudflare.com",
-  "note": "임시 주소 · 고정 도메인 준비 중",
-  "updated": "2026-09-30T16:57:39.153481+00:00",
-  "meaning": "The live demo address. Kept in its own file so it can change without editing the page."
+  "url": "https://evida.ndagentevida.com",
+  "note": "실제 연구 화면",
+  "updated": "2026-10-02T02:24:06.886950+00:00",
+  "meaning": "The live demo address; the public entry remains stable."
 }
