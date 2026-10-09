@@ -15,6 +15,10 @@
       --blue:#6f9bff; --blue-tint:#1a2438; --green:#4cc38a; --amber:#e0a33a; --amber-tint:#2a2114;
     }
   }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]) .launch{background:#2d5fe0;box-shadow:none}
+  }
+  :root[data-theme="dark"] .launch{background:#2d5fe0;box-shadow:none}
   :root[data-theme="dark"]{
     --ink:#e8eaed; --muted:#9aa4b0; --line:#2b3138; --bg:#12151a; --card:#191d23;
     --blue:#6f9bff; --blue-tint:#1a2438; --green:#4cc38a; --amber:#e0a33a; --amber-tint:#2a2114;
@@ -28,7 +32,7 @@
   body{margin:0;background:var(--bg);color:var(--ink);
     font:16px/1.75 -apple-system,BlinkMacSystemFont,"Pretendard","Apple SD Gothic Neo",
       "Malgun Gothic",Segoe UI,Roboto,sans-serif;
-    -webkit-font-smoothing:antialiased}
+    -webkit-font-smoothing:antialiased;word-break:keep-all;overflow-wrap:break-word}
   .wrap{max-width:860px;margin:0 auto;padding:48px 16px 80px}
   header{margin-bottom:34px}
   .eyebrow{font-size:13px;color:var(--muted);letter-spacing:.02em;margin:0 0 10px;font-weight:550}
@@ -50,9 +54,9 @@
   .paid{background:var(--amber-tint);color:var(--amber)}
   p{margin:10px 0}
   .small{font-size:14px;color:var(--muted)}
-  pre{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:15px 17px;
-    overflow-x:auto;font-size:13.5px;line-height:1.7;white-space:pre-wrap;word-break:break-word;
-    font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;margin:12px 0}
+  pre{background:var(--bg);border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:8px;
+    padding:14px 17px;overflow-x:auto;font-size:15px;line-height:1.75;white-space:normal;
+    word-break:keep-all;overflow-wrap:anywhere;font-family:inherit;margin:12px 0}
   .q{position:relative}
   .q h3{font-size:14px;color:var(--muted);margin:18px 0 0;font-weight:600}
   table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14.5px}
@@ -116,7 +120,7 @@
 <pre>간에서 인간 TTR 발현을 낮출 siRNA를 검토하고 싶습니다.
 공개 전사체와 후보 구간을 확인하고, 후보의 접근성·비표적 가능성과
 다음 세포 실험을 함께 비교해 주세요.</pre>
-  <p class="small">현재 공개판의 새 요청은 대회 API의 GPT-6 Sol / medium으로 실행됩니다. 대회 API가 토큰 사용량 한도(HTTP 403)를 반환하면 안내창에서 제출자 구독 모델(Claude Opus 5 / medium 또는 GPT-6 Sol / medium)을 직접 골라 다시 실행할 수 있습니다. 구독 모델은 제출자 개인 구독으로 운용되며 자동으로 바뀌지 않습니다. 모델 이용 안내에서 실제 연결 상태를 확인할 수 있습니다. 질문 구조화, 공개 자료 조회, 필요한 도구 실행과 판단이 순서대로 표시됩니다. 자료원의 응답과 조사 범위에 따라 수 분에서 수십 분이 걸릴 수 있습니다.</p>
+  <p class="small">공개판의 새 요청은 대회 API의 GPT-6 Sol / medium으로 실행됩니다. 대회 API가 토큰 사용량 한도(HTTP 403)를 반환하면 안내창에서 제출자 구독 모델(Claude Opus 5 / medium 또는 GPT-6 Sol / medium)을 직접 골라 다시 실행할 수 있습니다. 구독 모델은 제출자 개인 구독으로 운용되며 자동으로 바뀌지 않습니다. 모델 이용 안내에서 실제 연결 상태를 확인할 수 있습니다. 질문 구조화, 공개 자료 조회, 필요한 도구 실행과 판단이 순서대로 표시됩니다. 자료원의 응답과 조사 범위에 따라 수 분에서 수십 분이 걸릴 수 있습니다.</p>
 </section>
 <section>
   <h2><span class="no">2</span>다음 실험을 검토</h2>
@@ -155,7 +159,7 @@
   </div>
   <p class="small"><strong>네 요구:</strong> 기전/지정 표적, 실제 후보, 계산 또는 근거 있는 의존성, 다음 행동.<br>
   <strong>여섯 요소:</strong> 관찰 단위, 구체 비교 대상, 측정값, 조건과 의존성, 관측과 제안 조건의 구분, 결과에 따른 판단 변화.</p>
-  <p class="small">평가 기준은 답변 열람 전에 고정하고, 내용 검토에는 절차 이름을 가렸습니다. 개발팀의 내부 기술 비교이며, 평가 모델과 현재 공개판 모델은 위에 각각 명시했습니다. 결과의 적용 범위는 이 네 질문과 두 반복입니다.</p>
+  <p class="small">평가 기준은 답변 열람 전에 고정하고, 내용 검토에는 절차 이름을 가렸습니다. 개발팀의 내부 기술 비교이며, 평가 모델과 공개판 모델은 위에 각각 명시했습니다. 결과의 적용 범위는 이 네 질문과 두 반복입니다.</p>
   <p><a href="https://github.com/Hong-Lavi/evida-submission-2026/blob/main/evaluation/README.md">평가 기준과 원자료</a> · <a href="evaluation.json">집계</a> · <a href="https://github.com/Hong-Lavi/evida-submission-2026">검수한 제품 코드와 실행 안내</a></p>
 </section>
 <section>
@@ -165,14 +169,14 @@
     <caption class="small">공식 평가 분할과 제품의 계산 규칙을 고정한 부품 평가</caption>
     <thead><tr><th scope="col">평가 항목</th><th scope="col">자료 규모</th><th scope="col">실제 비교 결과</th></tr></thead>
     <tbody>
-      <tr><th scope="row">관련 문헌 검색</th><td data-label="자료 규모">NFCorpus 323질문·3,633문헌</td><td data-label="실제 비교 결과">상위10개 관련성 nDCG@10<br>BM25 0.3072 → MedCPT <strong>0.3655</strong></td></tr>
-      <tr><th scope="row">공개 활성값 예측</th><td data-label="자료 규모">MoleculeACE 30과제·29표적<br>평가 기록9,802건</td><td data-label="실제 비교 결과">과제 평균 오차 MAE<br>학습 평균1.0106 → RF <strong>0.5553</strong></td></tr>
+      <tr><th scope="row">관련 문헌 검색</th><td data-label="자료 규모">NFCorpus 질문 323개 · 문헌 3,633개</td><td data-label="실제 비교 결과">상위 10개 관련성 nDCG@10<br>BM25 0.3072 → MedCPT <strong>0.3655</strong></td></tr>
+      <tr><th scope="row">공개 활성값 예측</th><td data-label="자료 규모">MoleculeACE 30과제 · 표적 29개<br>평가 기록 9,802건</td><td data-label="실제 비교 결과">과제 평균 오차 MAE<br>학습 평균 1.0106 → RF <strong>0.5553</strong></td></tr>
     </tbody>
   </table>
   </div>
   <p>원 검색 순위와 활성 예측을 저장하고 공식 정답에서 지표를 다시 계산했습니다. 비교 대상·신뢰구간·전체 과제별 결과와 재검산 코드를 공개합니다.</p>
-  <p class="small">검색은 문헌의 관련성, 활성 예측은 공개 활성값의 예측 오차를 평가합니다. 위 연구 흐름16회와 각각 구분된 평가입니다. 활성 평가의 단위는 화합물–과제 기록이며, 공식 평가 자료에는 학습 자료와 골격을 공유하는 구조가 포함됩니다.</p>
-  <p><a href="https://github.com/Hong-Lavi/evida-submission-2026/tree/9e3230c/evaluation/components-20261002">평가 조건·전체 결과·그래프·재계산 코드</a></p>
+  <p class="small">검색은 문헌의 관련성, 활성 예측은 공개 활성값의 예측 오차를 평가합니다. 위 연구 흐름 16회 비교와 구분된 평가입니다. 활성 평가의 단위는 화합물–과제 기록이며, 공식 평가 자료에는 학습 자료와 골격을 공유하는 구조가 포함됩니다.</p>
+  <p><a href="https://github.com/Hong-Lavi/evida-submission-2026/tree/main/evaluation/components-20261002">평가 조건·전체 결과·그래프·재계산 코드</a></p>
 </section>
 <section>
   <h2>공개판 이용 안내</h2>
@@ -181,9 +185,9 @@
 </section>
 <footer>
   <a href="https://evida.ndagentevida.com">EVIDA 실행</a> ·
-  <a href="https://github.com/Hong-Lavi/evida-submission-2026">제출 코드</a> ·
+  <a href="https://github.com/Hong-Lavi/evida-submission-2026">제품 코드</a> ·
   <a href="https://github.com/Hong-Lavi/evida-demo">데모 안내 소스</a><br>
-  2026년 10월 2일 기준 · 팀 NDAgent
+  팀 NDAgent
 </footer>
 </div>
 <script>
