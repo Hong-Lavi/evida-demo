@@ -12,6 +12,6 @@ EVIDA는 연구자의 질환·목표에서 출발해 근거를 바탕으로 치�
 
 NFCorpus323질문·MoleculeACE30과제의 검색·활성 예측 부품 평가도 안내합니다. [고정 조건·원 출력·독립 재검산 코드](https://github.com/Hong-Lavi/evida-submission-2026/tree/9e3230c/evaluation/components-20261002)는 제출 코드 저장소에 있으며, 전체 연구 흐름16회와 별도 평가로 제공합니다.
 
-공개판의 새 연구는 대회 API GPT-6 Sol / medium으로 실행되고, 토큰 한도(HTTP 403) 시 제출자 구독 모델(Claude Opus 5 / medium, GPT-6 Sol / medium)을 방문자가 직접 선택합니다(2026-10-09 변경, 제출 당시는 Claude Opus 5 / high). 평가 실행은 GPT-6 Sol / medium으로 고정해 완료했습니다. 각 결과의 모델과 적용 범위를 구분해 안내합니다.
+공개판의 새 연구는 대회 API GPT-6 Sol / medium으로 실행되고, 토큰 한도(HTTP 403) 시 제출자 구독 모델(Claude Opus 5 / medium, GPT-6 Sol / medium)을 방문자가 직접 선택합니다. 평가 실행은 GPT-6 Sol / medium으로 고정해 완료했습니다. 각 결과의 모델과 적용 범위를 구분해 안내합니다.
 
 완료된 사례 조회에는 모델 호출이 없습니다. 새 질문·설명·후속 요청은 실제 모델을 실행하며 공개판의 호출·동시 실행 한도를 공유합니다.
