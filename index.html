@@ -53,6 +53,7 @@
   .free{background:var(--blue-tint);color:var(--blue)}
   .paid{background:var(--amber-tint);color:var(--amber)}
   p{margin:10px 0}
+  figure{margin:20px 0} summary{cursor:pointer;font-weight:600}
   .small{font-size:14px;color:var(--muted)}
   pre{background:var(--bg);border:1px solid var(--line);border-left:3px solid var(--blue);border-radius:8px;
     padding:14px 17px;overflow-x:auto;font-size:15px;line-height:1.75;white-space:normal;
@@ -95,23 +96,37 @@
   <span id="launch-host">evida.ndagentevida.com · 실제 연구 화면</span>
 </a>
 <section>
-  <h2>먼저 완료된 연구를 살펴보세요</h2>
+  <h2 id="saved-studies">먼저 저장된 연구를 살펴보세요</h2>
   <p>연구의 현재 판단에서 시작해 <strong>기전 → 후보의 2D 구조 → 다음 실험 → 근거 원문</strong>을 차례로 엽니다. 상세를 닫으면 살펴보던 연구와 선택으로 돌아옵니다.</p>
+  <ul>
+    <li><a href="https://evida.ndagentevida.com/?workspace=ws_d575a20bbf9047d2"><strong>뇌전증</strong></a> — 기전·저분자 후보와 구별 실험</li>
+    <li><a href="https://evida.ndagentevida.com/?workspace=ws_ff8a3fd859984073"><strong>COPD</strong></a> — 기존 치료의 한계와 관측 후 재판단</li>
+    <li><a href="https://evida.ndagentevida.com/?workspace=ws_b8cdca2ed22641ab"><strong>ATTR-CM</strong></a> — 단백질 안정화와 후보 동일성·계산 조건</li>
+    <li><a href="https://evida.ndagentevida.com/?workspace=ws_62adbaf10b8249d3"><strong>파킨슨병</strong></a> — 질환 기전과 후보·모델 실험의 연결</li>
+    <li><a href="https://evida.ndagentevida.com/?workspace=ws_4c375887117542a8"><strong>비소세포폐암</strong></a> — 내성 기전과 대안·반대 근거의 비교</li>
+    <li><a href="https://evida.ndagentevida.com/?workspace=ws_47f9067e7c434890"><strong>MASH</strong></a> — 대사 기전과 기존 치료·다음 비교</li>
+  </ul>
+  <details><summary>다른 저장 연구도 보기</summary>
   <ul>
     <li><a href="https://evida.ndagentevida.com/?workspace=ws_3c8fe9df9cd14339"><strong>특발성 폐섬유증 · 연구 기록 4</strong></a> — 경쟁 기전과 후보 구조, 후속 실험의 연결</li>
     <li><a href="https://evida.ndagentevida.com/?workspace=ws_1ff05aa2d7c24e0e"><strong>PDE4B · 연구 기록 8</strong></a> — 출발 화합물과 생성 구조, PDE4B2·PDE4D2 기능 비교</li>
     <li><a href="https://evida.ndagentevida.com/?workspace=ws_4475545a286541b2"><strong>ALS · 연구 판단의 변화</strong></a> — 기록 2→14에서 공개 실험 결과와 검토 피드백에 따른 적용 조건·다음 비교의 변화</li>
   </ul>
+  </details>
   <p class="small">저장된 결과와 원자료를 읽을 때는 모델 호출이 없습니다. 연구 기록 번호는 각 연구의 진행 이력입니다. 생성 구조는 기능 측정의 출발점이며 실험 카드는 수행할 비교를 구체화한 제안입니다.</p>
+</section>
+<section id="tools-and-reasoning">
+  <h2>목표에서 계산과 다음 판단까지</h2>
+  <p><strong>연구 목표 → 근거 조사·계산 → 조건부 후보와 다음 실험 → 관측 후 재판단</strong>을 하나의 연구 흐름으로 살펴봅니다. 후보를 고른 이유와 결과에 따라 바뀔 행동을 원자료·계산 조건과 함께 확인합니다.</p>
+  <p><strong>43개 계산·분석 함수</strong>가 제품 실행 경로에 연결돼 있습니다. 분자 구조·물성, 결합 부위와 포즈, RNA 후보, 경로와 관측 선택 등에서 필요한 입력과 측정 대상을 바탕으로 도구를 사용합니다.</p>
+  <p>추론 코어는 <strong>500편의 문헌 검토 기록과 48개 조건부 추론 관점</strong>을 연결합니다. 관찰에서 설명을 만들고, 다음 결정을 바꿀 정보를 선택하고, 관측에 맞춰 주장을 갱신하는 데 같은 코어를 사용합니다. 원문 위치·적용 조건·사례별 검토 이력을 상세에서 확인합니다.</p>
+  <p><a href="https://github.com/Hong-Lavi/evida-demo/blob/main/docs/DEMO_GUIDE.md">버튼에 맞춘 시연 안내</a> · <a href="https://github.com/Hong-Lavi/evida-demo/blob/main/README.en.md">English overview</a></p>
 </section>
 <section class="q">
   <h2><span class="no">1</span>새 연구 질문으로 시작</h2>
   <p><strong>새 연구</strong>에서 <strong>연구할 질환·현상과 바꾸고 싶은 결과</strong>를 적습니다. <strong>우선 검토할 접근</strong>에서 함께 비교·저분자부터·siRNA부터를 고른 뒤 <strong>목표에서 연구 시작</strong>을 누릅니다.</p>
   <h3>예시 · 질환과 목표에서 출발</h3>
-<pre>특발성 폐섬유증에서 폐 기능을 보존할 치료 연구 방향을 찾고 싶습니다.
-사람 연구와 질환 관련 실험 근거를 검토해 경쟁 기전을 비교하고,
-유용한 방향의 실제 후보와 구조를 찾아 주세요. 다음에 어떤 물질을
-무엇과 비교하고 어떤 값을 측정해야 할지도 제안해 주세요.</pre>
+<pre>특발성 폐섬유증에서 폐 기능을 보존할 치료 연구 방향을 찾고 싶습니다.</pre>
   <h3>예시 · 표적이 정해진 연구</h3>
 <pre>PDE4B를 겨냥하는 저분자를 연구하고 싶습니다. 보고된 화합물과 원 실험
 조건을 확인하고 그 화합물에서 새 구조를 제안해 주세요. 출발 화합물과
@@ -143,26 +158,6 @@
   </ul>
 </section>
 <section>
-  <h2>에이전트 성능과 평가 기준</h2>
-  <p>네 연구 질문(Alzheimer·IPF·PDE4B·TTR siRNA)을 두 절차에서 각각 두 번씩 시작한 <strong>총 16회 비교</strong>입니다. 같은 GPT-6 Sol / medium, 공개 자료원·제품 도구와 응답 상한을 사용하고 연구 진행 지시를 비교했습니다.</p>
-  <div class="table-scroll">
-  <table>
-    <caption class="small">원래 시작한 8건씩을 분모로 유지한 내부 비교</caption>
-    <thead><tr><th scope="col">평가 기준</th><th scope="col">일반 지시</th><th scope="col">EVIDA 절차</th></tr></thead>
-    <tbody>
-      <tr><th scope="row">최종 답변 게시</th><td>7/8</td><td><strong>8/8</strong></td></tr>
-      <tr><th scope="row">질문의 네 요구를 모두 추적</th><td>1/8</td><td><strong>4/8</strong></td></tr>
-      <tr><th scope="row">다음 행동의 여섯 요소</th><td>6/8</td><td><strong>7/8</strong></td></tr>
-      <tr><th scope="row">새 측정 카드에 여섯 요소·출처·결과 연결</th><td>3/8</td><td>3/8</td></tr>
-    </tbody>
-  </table>
-  </div>
-  <p class="small"><strong>네 요구:</strong> 기전/지정 표적, 실제 후보, 계산 또는 근거 있는 의존성, 다음 행동.<br>
-  <strong>여섯 요소:</strong> 관찰 단위, 구체 비교 대상, 측정값, 조건과 의존성, 관측과 제안 조건의 구분, 결과에 따른 판단 변화.</p>
-  <p class="small">평가 기준은 답변 열람 전에 고정하고, 내용 검토에는 절차 이름을 가렸습니다. 개발팀의 내부 기술 비교이며, 평가 모델과 공개판 모델은 위에 각각 명시했습니다. 결과의 적용 범위는 이 네 질문과 두 반복입니다.</p>
-  <p><a href="https://github.com/Hong-Lavi/evida-submission-2026/blob/main/evaluation/README.md">평가 기준과 원자료</a> · <a href="evaluation.json">집계</a> · <a href="https://github.com/Hong-Lavi/evida-submission-2026">검수한 제품 코드와 실행 안내</a></p>
-</section>
-<section>
   <h2>공개 데이터로 확인한 검색·활성 예측</h2>
   <div class="table-scroll">
   <table class="component-results">
@@ -174,9 +169,11 @@
     </tbody>
   </table>
   </div>
+  <figure><img src="assets/retrieval-nfcorpus.svg" alt="NFCorpus 323개 질문에서 BM25와 MedCPT의 검색 지표 비교. 세로축 0부터 1." style="width:100%;height:auto"><figcaption class="small">NFCorpus 공식 평가 323개 질문 · BM25와 MedCPT · 세로축 0–1</figcaption></figure>
+  <figure><img src="assets/activity-moleculeace.svg" alt="MoleculeACE 30개 과제에서 학습 평균 기준 오차 1과 RF 예측 오차 비교. 낮을수록 좋음." style="width:100%;height:auto"><figcaption class="small">MoleculeACE 공식 분할 · 30개 과제의 평균 오차 · 학습 평균 기준을 1로 정규화</figcaption></figure>
   <p>원 검색 순위와 활성 예측을 저장하고 공식 정답에서 지표를 다시 계산했습니다. 비교 대상·신뢰구간·전체 과제별 결과와 재검산 코드를 공개합니다.</p>
-  <p class="small">검색은 문헌의 관련성, 활성 예측은 공개 활성값의 예측 오차를 평가합니다. 위 연구 흐름 16회 비교와 구분된 평가입니다. 활성 평가의 단위는 화합물–과제 기록이며, 공식 평가 자료에는 학습 자료와 골격을 공유하는 구조가 포함됩니다.</p>
-  <p><a href="https://github.com/Hong-Lavi/evida-submission-2026/tree/main/evaluation/components-20261002">평가 조건·전체 결과·그래프·재계산 코드</a></p>
+  <p class="small">검색은 문헌의 관련성, 활성 예측은 공개 활성값의 예측 오차를 평가합니다. 활성 평가의 단위는 화합물–과제 기록이며, 공식 평가 자료에는 학습 자료와 골격을 공유하는 구조가 포함됩니다.</p>
+  <p><a href="https://github.com/Hong-Lavi/evida-submission-2026/tree/main/evaluation/components-20261002">부품 평가 조건·전체 결과·그래프·재계산 코드</a> · <a href="https://github.com/Hong-Lavi/evida-submission-2026/tree/main/evaluation">연구 흐름 평가와 원자료</a> · <a href="evaluation.json">고정 비교 집계</a></p>
 </section>
 <section>
   <h2>공개판 이용 안내</h2>
@@ -202,3 +199,4 @@ fetch('demo.json?t=' + Date.now()).then(r => r.ok ? r.json() : null).then(d => {
 </script>
 </body>
 </html>
+
